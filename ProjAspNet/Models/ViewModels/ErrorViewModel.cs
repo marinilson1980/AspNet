@@ -1,6 +1,6 @@
 using System;
 
-namespace ProjAspNet.Models {
+namespace ProjAspNet.Models.ViewModels {
     public class ErrorViewModel {
         public string RequestId { get; set; }
 
