@@ -34,8 +34,9 @@ namespace ProjAspNet {
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            services.AddDbContext<ProjAspNetContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("ProjAspNetContext")));
+            services.AddDbContext<ProjAspNetContext>(options =>                              
+                    options.UseMySql(Configuration.GetConnectionString("ProjAspNetContext"), builder =>
+                                                                builder.MigrationsAssembly("ProjAspNet")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
