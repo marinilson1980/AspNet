@@ -11,6 +11,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using ProjAspNet.Models;
+using ProjAspNet.Data;
 
 namespace ProjAspNet {
     public class Startup {
@@ -37,14 +38,16 @@ namespace ProjAspNet {
             services.AddDbContext<ProjAspNetContext>(options =>                              
                     options.UseMySql(Configuration.GetConnectionString("ProjAspNetContext"), builder =>
                                                                 builder.MigrationsAssembly("ProjAspNet")));
+            services.AddScoped<SeedingService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, SeedingService seedingservices)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                seedingservices.Seed();
             }
             else
             {
