@@ -13,6 +13,8 @@ namespace ProjAspNet.Models
         {
         }
 
-        public DbSet<ProjAspNet.Models.Departament> Departament { get; set; }
+        public DbSet<Departament> Departament { get; set; }
+        public DbSet<Seller> Seller { get; set; }
+        public DbSet<SalesRecord> SalesRecord{ get; set; }
     }
 }
