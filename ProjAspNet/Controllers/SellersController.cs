@@ -36,5 +36,30 @@ namespace ProjAspNet.Controllers
             _sellerServices.Insert(seller);
             return RedirectToAction(nameof(Index));
         }
+
+        public IActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            
+            var obj = _sellerServices.FindById(id.Value);
+
+            if (obj == null)
+            {
+                return NotFound();
+            }
+
+            return View(obj);
+        }
+
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        public IActionResult Delete(int id)
+        {
+            _sellerServices.Remove(id);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

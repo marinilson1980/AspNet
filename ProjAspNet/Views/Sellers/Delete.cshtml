@@ -1,0 +1,50 @@
+﻿@model ProjAspNet.Models.Seller
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<h3>Are your sure you wuant to delete this? </h3>
+
+<div>
+    <h4>Seller</h4>
+    <hr/>
+    <d1 class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mail)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Mail)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BirhDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BirhDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BaseSalary)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BaseSalary)
+        </dd>
+    </d1>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-danger"/>
+        <a asp-action="Index"> Back to list</a>
+    </form>
+</div>
+
