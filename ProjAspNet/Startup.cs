@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using ProjAspNet.Models;
 using ProjAspNet.Data;
+using ProjAspNet.Services;
 
 namespace ProjAspNet {
     public class Startup {
@@ -39,6 +40,7 @@ namespace ProjAspNet {
                     options.UseMySql(Configuration.GetConnectionString("ProjAspNetContext"), builder =>
                                                                 builder.MigrationsAssembly("ProjAspNet")));
             services.AddScoped<SeedingService>();
+            services.AddScoped<SellerServices>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
