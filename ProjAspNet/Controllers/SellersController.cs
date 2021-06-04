@@ -1,16 +1,19 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProjAspNet.Services;
 using ProjAspNet.Models;
+using ProjAspNet.Models.ViewModels;
 
 namespace ProjAspNet.Controllers
 {
     public class SellersController : Controller
     {
         private readonly SellerServices _sellerServices;
+        private readonly DepartamentServices _departamentServices;
 
-        public SellersController(SellerServices sellerServices)
+        public SellersController(SellerServices sellerServices, DepartamentServices departament)
         {
             _sellerServices = sellerServices;
+            _departamentServices = departament;
         }
 
         public IActionResult Index()
@@ -21,7 +24,9 @@ namespace ProjAspNet.Controllers
 
         public IActionResult Create()
         {
-            return View();
+            var departaments = _departamentServices.FindAll();
+            var viewModel = new SellerFormViewModel { Departaments = departaments };
+            return View(viewModel);
         }
 
         [HttpPost]
